@@ -1,7 +1,7 @@
 <?php
 
 //define('DIR_PATH', __DIR__.DIRECTORY_SEPARATOR."files".DIRECTORY_SEPARATOR);
-define('DIR_PATH', '/usr/home/user15/public_html/myphp/task1/files/');
+define('DIR_PATH', '/usr/home/user15/public_html/courses_php_HM/public_html/myphp/task1/files/');
 define('FLASH_KEY', 'flash_message');
 
 define('DIR_NOT_FOUND','directory not found');
