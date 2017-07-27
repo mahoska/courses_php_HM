@@ -10,10 +10,13 @@ define('ERROR_SELECT', "failed query execution");
 define('ERROR_INS', "error adding");
 
 define('HOST', 'localhost');
-define('USER', 'root');
-define('PSW', '');
 define('DATABASE', 'user1');
-//define('USER', 'user1');
-//define('PSW', 'tuser1');
-//define('DATABASE', 'user1');
+define('USER', 'user1');
+define('PSW', 'tuser1');
+
+//define('USER', 'root');
+//define('PSW', '');
+
+
+
 
