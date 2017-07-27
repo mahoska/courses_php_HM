@@ -16,7 +16,6 @@ function setFlash($message,$default='success')
 }
 
 
-
 function getFlash()
 {
     if (!isset($_SESSION[FLASH_KEY])) {
@@ -32,20 +31,22 @@ function getFlash()
 
 function readDirectory(&$to)
 {
-    $dir = opendir(DIR_PATH);
-    if(!$dir)
-        return false;
-    else{
-        while(($filename=readdir($dir))!==false){
-            if(!is_dir($filename)) { 
-                $filesize = getFileSize(DIR_PATH.$filename);
-                $to[]=['filename'=>$filename, 'filesize'=>$filesize];
+    if(is_dir(DIR_PATH))
+    {
+        $dir = opendir(DIR_PATH);
+
+            while(($filename=readdir($dir))!==false){
+                if(!is_dir($filename)) { 
+                    $filesize = getFileSize(DIR_PATH.$filename);
+                    $to[]=['filename'=>$filename, 'filesize'=>$filesize];
+                }
             }
-        }
-        closedir($dir);
-       
+            closedir($dir);
+
         return  true;
-    }
+    } 
+    else 
+        return false;
 }
 
 function  getFileSize($filename)
@@ -101,33 +102,37 @@ function  getFileSize($filename)
 
 function uploadFiles($data)
 {
-    
-    $resUpl= [];
-    $countUpl = 0;
-        for($i=0, $count=count($data['tmp_name']); $i<$count; $i++)
-        {
-            $isUpload = false;
-            $new_file_name = DIR_PATH.$data['name'][$i];
-            if(is_uploaded_file($data['tmp_name'][$i]))
+    if(is_dir(DIR_PATH))
+    {
+        $resUpl= [];
+        $countUpl = 0;
+            for($i=0, $count=count($data['tmp_name']); $i<$count; $i++)
             {
-                if(!file_exists($new_file_name))
-                {  
-                    if(move_uploaded_file($data['tmp_name'][$i], $new_file_name))
+                $isUpload = false;
+                $new_file_name = DIR_PATH.$data['name'][$i];
+                if(is_uploaded_file($data['tmp_name'][$i]))
+                {
+                    if(!file_exists($new_file_name))
                     {  
-                        $isUpload = true;
-                        $countUpl++;
+                        if(move_uploaded_file($data['tmp_name'][$i], $new_file_name))
+                        {  
+                            $isUpload = true;
+                            $countUpl++;
+                        }
                     }
                 }
+                $resUpl[] = ['fileName'=>$data['name'][$i],'isUpload'=> $isUpload];
             }
-            $resUpl[] = ['fileName'=>$data['name'][$i],'isUpload'=> $isUpload];
-        }
-        
-        $res = array(
-            'count' => $countUpl,
-            'infoUpl' => $resUpl
-        );
-        
-    return $res;  
+
+            $res = array(
+                'count' => $countUpl,
+                'infoUpl' => $resUpl
+            );
+
+        return $res;  
+    }
+    else 
+        return false;
 }
 
 function deleteFile($del_file)
