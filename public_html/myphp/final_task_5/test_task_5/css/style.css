@@ -1,0 +1,36 @@
+*{
+    font-family: Arial;  
+    padding:0;
+    margin: 0;
+}
+
+
+body{
+    padding-top:50px;
+    font-size: 14px;
+}
+
+.centrl{
+    text-align: center;
+}
+
+
+.fail,.saccess {
+    font-weight: bold; 
+}
+
+.fail{
+    color:red;
+}
+
+.success{
+    color:green;
+}
+
+.listResUpl{
+    list-style: none;
+    line-height:20px;
+    margin-top: 15px;
+}
+
+
