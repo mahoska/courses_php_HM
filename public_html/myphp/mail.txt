@@ -1,0 +1,30 @@
+ if(isset($_POST['id_book'])){
+        $fio =$_POST['fio'];
+        $address = $_POST['address'];
+        $email = $_POST['email'];
+        $quantity = $_POST['quantity'];
+        $book_name = $book_info['book_name'];
+        $price = $book_info['price'];
+        
+        $message = "
+          Информация о заказчике:
+          ----------------------\n
+           ФИО: $fio\n
+           E-mail: $email\n
+           Адрес: $address\n\n
+          Информация о заказе:
+          ----------------------\n
+           Название книги: $book_name\n
+           Автор(ы): $authors_full_name\n
+           Жанр(ы): $genres_name\n
+           Количество: $quantity\n
+           ";
+        $to = "admin@mail.ru";
+        $from = "book_catalogue@mail.ru";
+        $subject = "информация о заказе";
+        $subject  = "=?utf-8?=B?".base64_encode($subject)."?=";
+        $headers = "FROM: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";
+       
+        if (mail($to, $subject, $message, $headers)) {
+            echo "send";
+        }
