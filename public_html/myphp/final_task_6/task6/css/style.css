@@ -1,0 +1,35 @@
+*{
+    font-family: Arial;  
+    padding:0;
+    margin: 0;
+}
+
+body{
+    padding-top:50px;
+}
+
+
+.head tr th{
+    background-color: #9999ff;
+    text-align: center;
+}
+
+.band{
+   background-color: lavender;
+   
+}
+
+.band h3{
+    color: blue;
+    font-family: "Comic Sans MS";
+    padding-left: 30px;
+}
+
+.band span{
+    color: black;
+    font-size: 12px;
+}
+
+.musician ul{
+    margin-left: 20px;
+}
