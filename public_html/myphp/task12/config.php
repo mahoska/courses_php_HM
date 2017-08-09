@@ -9,24 +9,24 @@ define('PG_TABLE_NAME', 'PG_TEST');
 //mysql
 define('HOST','localhost');
 define('DBNAME', 'user1');
-//define('USER', 'user1');
-//define('PSW', 'tuser1');
+define('USER', 'user1');
+define('PSW', 'tuser1');
 
 //local
-define('USER', 'root');
-define('PSW', ''); //xampp
+//define('USER', 'root');
+//define('PSW', ''); 
 
 
 //postgres
 define('PGHOST', 'localhost');
 define('PGDBNAME', 'user1');
 //hosting
-//define('PGUSER', 'user1'); 
-//define('{PGPSW', 'user1z');
+define('PGUSER', 'user1'); 
+define('{PGPSW', 'user1z');
 
 //local
-define('PGUSER', 'anna');
-define('PGPSW', '111');
+//define('PGUSER', 'anna');
+//define('PGPSW', '111');
 
 define("MYSQL","MySql");
 define("PGSQL","PgSql");
